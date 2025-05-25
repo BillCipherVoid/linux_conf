@@ -33,4 +33,26 @@ source zsh/install.bash
 zsh
 ```
 
+# alacritty + wsl 
+## Для винды
+Создаём папку куда перенесём настройки
+Подставьте нужное имя пользователя
+```bash
+mkdir -p /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/themes
+```
+Переносим файл в созданную папку
+```bash
+cp ~/.congig/alacritty/alacritty.toml /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/
+```
+
+```bash
+git clone https://github.com/alacritty/alacritty-theme
+```
+
+```bash
+cp -r alacritty-theme/* /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/themes
+```
+с сайта скачиваем hack `nerd font` с сайта
+https://www.nerdfonts.com/font-downloads
+и устанавливаем все шрифты
 
