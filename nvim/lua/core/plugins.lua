@@ -62,6 +62,7 @@ require("lazy").setup({
     {'ayu-theme/ayu-vim'},
     {'sainnhe/gruvbox-material'},
     {'rebelot/kanagawa.nvim'},
+    
     {'numToStr/Comment.nvim',
       config = function()
         require('Comment').setup({
@@ -79,9 +80,11 @@ require("lazy").setup({
         })
       end
     },
-
-    {'nvim-telescope/telescope.nvim'},
+    
+    -- Поиск по файлам
+    {'nvim-telescope/telescope.nvim'}, 
     {'nvim-telescope/telescope-fzf-native.nvim'},
+
     {'Pocco81/auto-save.nvim'}, -- Автосохранение
     {'jose-elias-alvarez/null-ls.nvim'}, -- Форматирование и линтинг
 })
