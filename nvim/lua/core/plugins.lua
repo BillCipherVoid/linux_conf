@@ -55,7 +55,7 @@ require("lazy").setup({
     {'hrsh7th/cmp-nvim-lsp'},
     {'saadparwaiz1/cmp_luasnip'},
     {'nvim-treesitter/nvim-treesitter' },-- Подсветка синтаксиса
-    
+    {"folke/todo-comments.nvim"},    -- Подсветка и работа с TODO
 
     -- Color schemes
     {'morhetz/gruvbox'},
