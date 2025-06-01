@@ -2,7 +2,7 @@
 local cmp = require('cmp')
 cmp.setup({
   completion = {
-    autocomplete = false, -- Отключить автоматическое появление
+    autocomplete = false, -- Отключить автоматическое появление, так как сильно грузит Vim
   },
   mapping = {
     ['<C-Space>'] = cmp.mapping.complete(), -- Вызов меню автокомплита

@@ -1,18 +1,17 @@
 -- Basic
 require("core.config")
-require("core.plugins")
+require("core.init_plugins")
 require("core.keymaps")
+
+-- Plugins
+require("plugins.telescope") -- Поиск по файлам
+require("plugins.Coment")  -- Коментирование
+require("plugins.cmp")  -- Автокомлит
+require("plugins.lsp")  -- LSP
+require('auto-save').setup() -- Автосохранения 
 
 -- Color scheme
 vim.cmd([[colorscheme kanagawa-dragon]]) -- kanagawa-wave, kanagawa-dragon, kanagawa-lotus
-
---Plugins
-require("plugins.lsp")
-require("plugins.luasnip")
-require("plugins.cmp")
-
---Auto-Save
-require('auto-save').setup()
 
 -- прозрачный bg  
 vim.cmd([[
@@ -21,4 +20,3 @@ vim.cmd([[
    highlight LineNr guibg=NONE ctermbg=NONE
    highlight EndOfBuffer guibg=NONE ctermbg=NONE
 ]])
-

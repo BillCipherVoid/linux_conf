@@ -2,7 +2,6 @@
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local on_attach = function(client, bufnr)
-
     -- Быстрые команды для LSP
     local opts = { buffer = bufnr, noremap = true, silent = true }
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
