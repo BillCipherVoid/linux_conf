@@ -2,6 +2,7 @@ vim.opt.mouse = "a" -- Enable mouse support
 vim.opt.encoding = "utf-8"       -- Общая кодировка (необязательно, по умолчанию UTF-8)
 vim.opt.fileencoding = "utf-8"  -- Кодировка файлов
 vim.opt.number = true -- Show line numbers
+vim.opt.relativenumber = true  -- Относительно курсора номер строки
 vim.opt.cursorline = false -- Disable highlight current cursor's line
 vim.opt.swapfile = false -- Disable .swp files 
 vim.opt.scrolloff = 7 -- Number of lines left visible above/below the cursor when scrolling
