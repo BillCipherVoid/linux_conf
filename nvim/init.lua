@@ -9,6 +9,8 @@ require("plugins.Coment")  -- Коментирование
 require("plugins.cmp")  -- Автокомлит
 require("plugins.lsp")  -- LSP
 require('auto-save').setup() -- Автосохранения 
+require("autoclose").setup() -- Автоматические двойные кавычки, скобки и тп. И работа с ними
+
 
 -- Color scheme
 vim.cmd([[colorscheme kanagawa-dragon]]) -- kanagawa-wave, kanagawa-dragon, kanagawa-lotus

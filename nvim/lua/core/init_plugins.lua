@@ -35,11 +35,12 @@ require("lazy").setup({
     {'nvim-treesitter/nvim-treesitter' },-- Подсветка синтаксиса
     {"folke/todo-comments.nvim"},    -- Подсветка и работа с TODO
     {'numToStr/Comment.nvim'},  -- Для удобного коментирования
-
+    {'m4xshen/autoclose.nvim'},  -- Автоматические двойные кавычки, скобки и тп. И работа с ними
+    
     -- Поиск по файлам
     {'nvim-telescope/telescope.nvim'}, 
     {'nvim-telescope/telescope-fzf-native.nvim'},
-
+    
     {'Pocco81/auto-save.nvim'}, -- Автосохранение
     {'jose-elias-alvarez/null-ls.nvim'}, -- Форматирование и линтинг
     
