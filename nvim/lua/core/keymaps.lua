@@ -30,3 +30,4 @@ vim.keymap.set('n', 'H', 'gT', { noremap = true }) -- Переключение �
 vim.keymap.set('n', 'L', 'gt', { noremap = true }) 
 
 vim.keymap.set('n', 'gw', ':bp|bd #<CR>', { noremap = true, silent = true })  -- Закрыть буфер
+vim.keymap.set('n', ',e', ':Texplore $PWD<CR>', { noremap = true, silent = true })
