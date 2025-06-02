@@ -67,6 +67,18 @@ sudo ln -s ~/.soft/nvim/bin/nvim /usr/local/bin/nvim
 
 Кофиг автоматически подтянется
 
+
+## Error telescope-fzf-native
+
+Иногда команда make не запускается автоматом. По этому надо это сделать ручками
+```
+cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim
+```
+```
+make
+```
+
+
 ## Преписанные комбинации
 
 - `jk` - esc в inset mode

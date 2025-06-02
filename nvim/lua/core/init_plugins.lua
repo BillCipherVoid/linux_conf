@@ -39,8 +39,8 @@ require("lazy").setup({
     
     -- Поиск по файлам
     {'nvim-telescope/telescope.nvim'}, 
-    {'nvim-telescope/telescope-fzf-native.nvim'},
-    
+    {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
+        
     {'Pocco81/auto-save.nvim'}, -- Автосохранение
     {'jose-elias-alvarez/null-ls.nvim'}, -- Форматирование и линтинг
     
