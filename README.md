@@ -150,3 +150,5 @@ cp -r alacritty-theme/* /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/t
 https://www.nerdfonts.com/font-downloads
 и устанавливаем все шрифты
 
+# TODO
+TODO: null-ls посмотреть что можно еще подключить

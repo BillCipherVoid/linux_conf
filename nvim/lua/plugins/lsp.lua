@@ -22,6 +22,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
+
+
 end
 
 -- Настройка LSP для Python (Pyright)
@@ -40,3 +42,13 @@ lspconfig.pyright.setup({
 })
 
 
+-- Null-ls для Prettier
+local null_ls = require('null-ls')
+require('null-ls').setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.code_actions.eslint,   
+        null_ls.builtins.formatting.prettier
+    },
+    on_attach = on_attach
+})
