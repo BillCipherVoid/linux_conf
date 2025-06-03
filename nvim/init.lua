@@ -9,6 +9,7 @@ require("plugins.Coment")  -- Коментирование
 require("plugins.cmp")  -- Автокомлит
 require("plugins.lsp")  -- LSP
 require("plugins.todo-comments")  -- Работа с TODO
+require("plugins.luasnip")  -- Работа с эммитами
 require('auto-save').setup() -- Автосохранения 
 require("autoclose").setup() -- Автоматические двойные кавычки, скобки и тп. И работа с ними
 

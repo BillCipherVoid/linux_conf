@@ -31,12 +31,13 @@ require("lazy").setup({
     {'neovim/nvim-lspconfig'}, -- LSP
     {'hrsh7th/nvim-cmp' },-- Autocomplete
     {'hrsh7th/cmp-nvim-lsp'},
+    {'L3MON4D3/LuaSnip'},
     {'saadparwaiz1/cmp_luasnip'},
     {'nvim-treesitter/nvim-treesitter' },-- Подсветка синтаксиса
     {"folke/todo-comments.nvim"},    -- Подсветка и работа с TODO
     {'numToStr/Comment.nvim'},  -- Для удобного коментирования
     {'m4xshen/autoclose.nvim'},  -- Автоматические двойные кавычки, скобки и тп. И работа с ними
-    
+
     -- Поиск по файлам
     {'nvim-telescope/telescope.nvim'}, 
     {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},

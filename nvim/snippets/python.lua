@@ -2,6 +2,10 @@ local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local extras = require("luasnip.extras")
+local rep = extras.rep
+local dl = extras.dynamic_lambda
+
 
 return {
   -- def
@@ -18,6 +22,22 @@ return {
   s("ppr", {
     t('__import__("pprint").pprint('), i(1, 'obj'), t(")")
   }),
+
+  -- method
+  s("met",{
+      t('def '), i(1, "func_name"), t("(self, "), i(2), t({"):", "\t"}), i(3, "pass")
+  }),
+ 
+  -- method name: __name__
+  s("pmet",{
+      t('def '), t("__"), i(1, "func_name"), t("__(self, "), i(2), t({"):", "\t"}), i(3, "pass")
+  }),
+
+    -- init 
+  s("init",{
+      t('def '), t("__init__"), t("(self, "), i(1), t({"):", "\t"}), t("self."), rep(1), t(" = "), rep(1)
+  }),
+
 
   -- log to webhook
   s("wlog", {
