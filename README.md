@@ -136,7 +136,7 @@ mkdir -p /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/themes
 ```
 Переносим файл в созданную папку
 ```bash
-cp ~/.congig/alacritty/alacritty.toml /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/
+cp ~/.config/alacritty/alacritty.toml /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/
 ```
 
 ```bash
