@@ -15,7 +15,7 @@ vim.opt.fileformat = "unix"
 vim.opt.smartindent = true
 vim.opt.splitbelow = true -- horizontal split open below and right
 vim.opt.splitright = true
-vim.g.mapleader = ' ' -- Leader key
+vim.g.mapleader = ',' -- Leader key
 vim.opt.termguicolors = true -- 24-bit colors
 
 
