@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'c',
+    pattern = 'cpp',
     callback = function()
         vim.keymap.set('n', '<C-h>', ':w<CR>:!gcc % -o out; ./out<CR>', { buffer = true, silent = true })
         vim.keymap.set('i', '<C-h>', '<Esc>:w<CR>:!gcc % -o out; ./out<CR>', { buffer = true, silent = true })
@@ -24,10 +24,15 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Common keymaps
 vim.keymap.set('i', 'jk', '<Esc>', { noremap = true })
-vim.keymap.set('n', ',<Space>', ':nohlsearch<CR>', { noremap = true })  -- Выключение текущего выделения поиска
+vim.keymap.set('n', '<leader><Space>', ':nohlsearch<CR>', { noremap = true })  -- Выключение текущего выделения поиска
 
-vim.keymap.set('n', 'H', 'gT', { noremap = true }) -- Переключение вкладок
+-- Переключение вкладок
+vim.keymap.set('n', 'H', 'gT', { noremap = true }) 
 vim.keymap.set('n', 'L', 'gt', { noremap = true }) 
 
+vim.keymap.set('n', '<leader>e', ':Texplore $PWD<CR>', { noremap = true, silent = true })
+
+-- Buffer
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set('n', 'gw', ':bp|bd #<CR>', { noremap = true, silent = true })  -- Закрыть буфер
-vim.keymap.set('n', ',e', ':Texplore $PWD<CR>', { noremap = true, silent = true })
