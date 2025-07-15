@@ -1,25 +1,27 @@
 -- Basic
 require("core.config")
-require("core.init_plugins")
+require("core.lazy")
 require("core.keymaps")
-
--- Plugins
-require("plugins.telescope") -- Поиск по файлам
-require("plugins.Coment")  -- Коментирование
-require("plugins.cmp")  -- Автокомлит
-require("plugins.lsp")  -- LSP
-require("plugins.todo-comments")  -- Работа с TODO
-require("plugins.luasnip")  -- Работа с эммитами
-require('auto-save').setup() -- Автосохранения 
-require("autoclose").setup() -- Автоматические двойные кавычки, скобки и тп. И работа с ними
 
 -- Color scheme
 vim.cmd([[colorscheme kanagawa-dragon]]) -- kanagawa-wave, kanagawa-dragon, kanagawa-lotus
 
 -- прозрачный bg  
 vim.cmd([[
-   highlight Normal guibg=NONE ctermbg=NONE
-   highlight NonText guibg=NONE ctermbg=NONE
-   highlight LineNr guibg=NONE ctermbg=NONE
-   highlight EndOfBuffer guibg=NONE ctermbg=NONE
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight NonText guibg=NONE ctermbg=NONE
+    highlight LineNr guibg=NONE ctermbg=NONE
+    highlight EndOfBuffer guibg=NONE ctermbg=NONE
+
+    highlight SignColumn guibg=NONE ctermbg=NONE
+    highlight DiagnosticSignError guibg=NONE ctermbg=NONE
+    highlight DiagnosticSignWarn guibg=NONE ctermbg=NONE
+    highlight DiagnosticSignInfo guibg=NONE ctermbg=NONE
+    highlight DiagnosticSignHint guibg=NONE ctermbg=NONE
+
+
+    highlight GitSignsAdd guibg=NONE ctermbg=NONE
+    highlight GitSignsChange guibg=NONE ctermbg=NONE
+    highlight GitSignsDelete guibg=NONE ctermbg=NONE
 ]])
+
