@@ -14,6 +14,6 @@ alias mkpyproj="python3 -m venv .venv &&
     pip install pyright"
 alias mkdjproj="mkpyproj &&
     pip install django django-stubs django-types django-extensions ipython &&
-    echo '--- Pls add djangon_extensions in INSTALLED_APPS'"
+    echo '\n--- Pls add djangon_extensions in INSTALLED_APPS'"
 # WSL Windos
 #alias open=explorer.exe # for windows wsl - open dir in ecploer windos: open .
