@@ -1,13 +1,4 @@
 return {
-    {'jose-elias-alvarez/null-ls.nvim'}, -- Форматирование и линтинг
-
-    {
-        "hrsh7th/cmp-nvim-lsp", 
-        opts = {},
-        dependencies = {"neovim/nvim-lspconfig"},
-    },
-
-
     {
         'hrsh7th/nvim-cmp', 
         dependencies = {"hrsh7th/cmp-nvim-lsp"},
@@ -38,7 +29,6 @@ return {
                 },
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },  -- Источник из LSP
-                    { name = 'html-css' },  -- Источник из LSP
                 }),
             }
         end,
@@ -48,8 +38,6 @@ return {
         'neovim/nvim-lspconfig',
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            "neovim/nvim-cmp",
-            "jose-elias-alvarez/null-ls.nvim",
             "nvim-treesitter/nvim-treesitter",
                 },
             config = function()
@@ -72,55 +60,6 @@ return {
                     },
                 },
             })
-
-            local null_ls = require('null-ls')
-            require('null-ls').setup({
-                sources = {
-                    null_ls.builtins.diagnostics.eslint,
-                    null_ls.builtins.code_actions.eslint,   
-                    null_ls.builtins.formatting.prettier,
-                },
-                on_attach = on_attach
-            })
         end,
-    },
-    {
-      "Jezda1337/nvim-html-css",
-      dependencies = { "hrsh7th/nvim-cmp", "nvim-treesitter/nvim-treesitter" }, -- Use this if you're using nvim-cmp
-      opts = {
-        enable_on = { -- Example file types
-          "html",
-          "htmldjango",
-          "tsx",
-          "jsx",
-          "erb",
-          "svelte",
-          "vue",
-          "blade",
-          "php",
-          "templ",
-          "astro",
-        },
-        -- handlers = {
-        --   definition = {
-        --     bind = "gd"
-        --   },
-        --   hover = {
-        --     bind = "K",
-        --     wrap = true,
-        --     border = "none",
-        --     position = "cursor",
-        --   },
-        -- },
-        -- documentation = {
-        --   auto_show = true,
-        -- },
-        style_sheets = {
-          "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
-          "https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.3/css/bulma.min.css",
-          "./index.css", -- `./` refers to the current working directory.
-        },
-      },
-
     },
 }
