@@ -16,4 +16,6 @@ alias mkdjproj="mkpyproj &&
     pip install django django-stubs django-types django-extensions ipython &&
     echo '\n--- Pls add djangon_extensions in INSTALLED_APPS'"
 # WSL Windos
-#alias open=explorer.exe # for windows wsl - open dir in ecploer windos: open .
+# выбери один из open
+# alias open=explorer.exe # for windows wsl - open dir in ecploer windos: open .
+# alias open="/mnt/c/Windows/explorer.exe" # for windows wsl - open dir in ecploer windos: open .
