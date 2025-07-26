@@ -1,7 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        -- event = { "LazyFile", "VeryLazy" },
+        event = "BufReadPost", 
         lazy = vim.fn.argc(-1) == 0,
         init = function(plugin)
             require("nvim-treesitter.query_predicates")

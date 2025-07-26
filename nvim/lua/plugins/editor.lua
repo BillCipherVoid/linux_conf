@@ -2,6 +2,8 @@ return {
     -- Поиск по файлам
     {
         'nvim-telescope/telescope.nvim',
+        cmd = "Telescope",
+        lazy = true,
         dependencies = {
             {'nvim-lua/plenary.nvim'},
             {
@@ -45,13 +47,20 @@ return {
 
     {'m4xshen/autoclose.nvim',  -- Автоматические двойные кавычки, скобки и тп. И работа с ними
         opts = {},
+        event = "InsertEnter",
+        lazy = true,
     },  
         
     {
         'mattn/emmet-vim', 
+        event = "BufReadPost",
+        lazy = true,
+        ft = "html",
     },
 
     {'numToStr/Comment.nvim',  -- Для удобного коментирования
+        event = "BufReadPost",
+        lazy = true,
         opts = {
             -- Включить/отключить добавление пробела после символа комментария
             padding = true,
@@ -75,5 +84,10 @@ return {
         },
     },    
 
-    {'Pocco81/auto-save.nvim', opts = {}}, -- Автосохранение 
+    {
+        'Pocco81/auto-save.nvim', 
+        opts = {},
+        event = "InsertLeave", -- FocusLost  Сохраняет файл при потере фокуса окном NeoVim.
+        lazy = true,
+    }, -- Автосохранение 
 }
