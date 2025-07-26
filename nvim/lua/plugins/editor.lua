@@ -2,40 +2,65 @@ return {
     -- Поиск по файлам
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = {'nvim-lua/plenary.nvim'},
+        cmd = "Telescope",
+        lazy = true,
+        dependencies = {
+            {'nvim-lua/plenary.nvim'},
+            {
+                'nvim-telescope/telescope-fzf-native.nvim', 
+                dependencies = {"nvim-telescope/telescope.nvim"},
+                build = function()
+                    vim.fn.system('cd ' .. vim.fn.stdpath('data') .. '/lazy/telescope-fzf-native.nvim && make')
+                end,
+                opts = {},
+                config = function(plugin)
+                    require('telescope').load_extension('fzf')      
+                end,
+            }
+        },
+        opts = function()
+            local actions = require('telescope.actions')
+
+            return {
+                defaults = {
+                    mappings = {
+                        n = {
+                            ["q"] = actions.close,
+                        },
+                    },
+                },
+            }
+        end,
         keys = function()
             local builtin = require('telescope.builtin')
-
             vim.keymap.set('n', 'gr', builtin.lsp_references, 
                                 {noremap = true, silent = true})
             vim.keymap.set('n', 'gd', builtin.lsp_definitions,
                                     {noremap = true, silent = true})
             return {
-                {"<leader>f", ":Telescope find_files<CR>", mode = {"n"}},
-                {'<leader>g', ':Telescope live_grep<CR>', mode = {"n"}},
+                {"<leader>ff", ":Telescope find_files<CR>", mode = {"n"}, desc="[f]ind files"},
+                {'<leader>fg', ':Telescope live_grep<CR>', mode = {"n"}, desc="live [g]rep"},
+                { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "[r]ecent" },
             }
         end,
     }, 
-    {
-        'nvim-telescope/telescope-fzf-native.nvim', 
-        dependencies = {"nvim-telescope/telescope.nvim"},
-        build = 'make' or 'cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim && make',
-        opts = {},
-        config = function(plugin)
-            require('telescope').load_extension('fzf')      
-        end,
-    },
-
 
     {'m4xshen/autoclose.nvim',  -- Автоматические двойные кавычки, скобки и тп. И работа с ними
         opts = {},
+        event = "InsertEnter",
+        lazy = true,
     },  
         
     {
         'mattn/emmet-vim', 
+        event = "BufReadPost",
+        lazy = true,
+        ft = "html",
     },
 
     {'numToStr/Comment.nvim',  -- Для удобного коментирования
+        event = "BufReadPost",
+        lazy = true,
         opts = {
             -- Включить/отключить добавление пробела после символа комментария
             padding = true,
@@ -59,5 +84,10 @@ return {
         },
     },    
 
-    {'Pocco81/auto-save.nvim', opts = {}}, -- Автосохранение 
+    {
+        'Pocco81/auto-save.nvim', 
+        opts = {},
+        event = "InsertLeave", -- FocusLost  Сохраняет файл при потере фокуса окном NeoVim.
+        lazy = true,
+    }, -- Автосохранение 
 }

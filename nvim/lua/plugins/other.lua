@@ -8,6 +8,9 @@ return {
     --     },
     --     config = function(_, opts)
     --         local ls = require("luasnip")
+    --         opts.expand = function(args)
+    --             luasnip.lsp_expand(args.body)
+    --         end,
     --         ls.setup(opts)
     --         local snip_path = vim.fn.stdpath("config") .. "/snippets"
     --         require("luasnip.loaders.from_lua").lazy_load({ paths = snip_path })
@@ -34,6 +37,6 @@ return {
     --     config = function()
     --         
     --     end,
-    --     lazy=true,
+    --     -- lazy=true,
     -- },
 }
