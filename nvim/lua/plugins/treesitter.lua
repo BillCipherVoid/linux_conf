@@ -1,39 +1,22 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        -- event = { "LazyFile", "VeryLazy" },
+        event = "BufReadPost", 
         lazy = vim.fn.argc(-1) == 0,
         init = function(plugin)
             require("nvim-treesitter.query_predicates")
         end,
         opts = {
             ensure_installed = {
-                "bash",
-                "c",
-                "diff",
-                "html",
-                "css",
-                "javascript",
-                "jsdoc",
-                "json",
-                "jsonc",
-                "lua",
-                "luadoc",
-                "luap",
-                "markdown",
-                "markdown_inline",
-                "printf",
                 "python",
-                "query",
-                "regex",
-                "toml",
+                "javascript",
+                "typescript",
                 "tsx",
-                "vim",
-                "vimdoc",
-                "xml",
-                "yaml",
-                },
+                "css",
+                "html",
+            },
             highlight = { enable = true },
+            rainbow = { enable = true },
         },
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts) 
