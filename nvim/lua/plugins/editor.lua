@@ -53,14 +53,17 @@ return {
         
     {
         'mattn/emmet-vim', 
-        event = "BufReadPost",
-        lazy = true,
         ft = "html",
     },
 
     {'numToStr/Comment.nvim',  -- Для удобного коментирования
-        event = "BufReadPost",
         lazy = true,
+        keys = {  -- Для ленивой загрузки
+            {'<leader>cc'},
+            {'<leader>cb'},
+            {'<leader>c', mode="v"},
+            {'<leader>b', mode="v"},
+        },
         opts = {
             -- Включить/отключить добавление пробела после символа комментария
             padding = true,
@@ -79,7 +82,7 @@ return {
     { "folke/todo-comments.nvim",  -- Подсветка и работа с TODO
         lazy = true,
         opts = {},
-        keys = {
+        keys = { -- Для ленивой загрузки
             {'<leader>td', ':TodoTelescope <CR>', desc="TODO"},
         },
     },    
