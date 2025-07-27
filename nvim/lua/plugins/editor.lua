@@ -38,9 +38,15 @@ return {
             vim.keymap.set('n', 'gd', builtin.lsp_definitions,
                                     {noremap = true, silent = true})
             return {
+                -- find
                 {"<leader>ff", ":Telescope find_files<CR>", mode = {"n"}, desc="[f]ind files"},
                 {'<leader>fg', ':Telescope live_grep<CR>', mode = {"n"}, desc="live [g]rep"},
                 { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "[r]ecent" },
+                {
+                    "<leader>fb",
+                    "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
+                    desc = "Buffers",
+                },
             }
         end,
     }, 
