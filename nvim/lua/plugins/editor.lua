@@ -38,9 +38,15 @@ return {
             vim.keymap.set('n', 'gd', builtin.lsp_definitions,
                                     {noremap = true, silent = true})
             return {
+                -- find
                 {"<leader>ff", ":Telescope find_files<CR>", mode = {"n"}, desc="[f]ind files"},
                 {'<leader>fg', ':Telescope live_grep<CR>', mode = {"n"}, desc="live [g]rep"},
                 { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "[r]ecent" },
+                {
+                    "<leader>fb",
+                    "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
+                    desc = "Buffers",
+                },
             }
         end,
     }, 
@@ -53,14 +59,17 @@ return {
         
     {
         'mattn/emmet-vim', 
-        event = "BufReadPost",
-        lazy = true,
         ft = "html",
     },
 
     {'numToStr/Comment.nvim',  -- Для удобного коментирования
-        event = "BufReadPost",
         lazy = true,
+        keys = {  -- Для ленивой загрузки
+            {'<leader>cc'},
+            {'<leader>cb'},
+            {'<leader>c', mode="v"},
+            {'<leader>b', mode="v"},
+        },
         opts = {
             -- Включить/отключить добавление пробела после символа комментария
             padding = true,
@@ -79,7 +88,7 @@ return {
     { "folke/todo-comments.nvim",  -- Подсветка и работа с TODO
         lazy = true,
         opts = {},
-        keys = {
+        keys = { -- Для ленивой загрузки
             {'<leader>td', ':TodoTelescope <CR>', desc="TODO"},
         },
     },    

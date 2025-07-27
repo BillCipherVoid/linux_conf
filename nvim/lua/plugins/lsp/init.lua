@@ -41,8 +41,6 @@ return {
 
     {
         'neovim/nvim-lspconfig',
-        event = "BufReadPost",
-        lazy = true,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "nvim-treesitter/nvim-treesitter",
@@ -112,7 +110,6 @@ return {
     {
       "Jezda1337/nvim-html-css",
       dependencies = { "hrsh7th/nvim-cmp", "nvim-treesitter/nvim-treesitter" }, 
-      event = "BufReadPost",
       lazy = true,
       ft = "html,css",
       opts = {
