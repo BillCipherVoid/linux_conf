@@ -1,46 +1,65 @@
-# Начало
-Всё это должно лежать в папке `.config`
-# ssh config
-```bash
-sudo vim /etc/ssh/sshd_congig
-```
-И там вписать то что находиться в ssh/conf.txt
+linux_conf - Унифицированная коллекция dotfiles для создания консистентной и продуктивной среды разработки на Linux и Windows Subsystem for Linux (WSL). Включает преднастроенные конфигурации для tmux, git, alacritty, ssh и zsh.
 
+# Установка
+Убедитесь, что все файлы конфигурации находятся в директории `~/.config` (в вашем домашнем каталоге). Если директории `.config` не существует, создайте ее: 
+```bash
+mkdir ~/.config
+```
+
+## Настройка
+### Настройка SSH (Опционально)
+создаём ссылку на нашу настройку которая расположена в `ssh/conf.conf`
+```bash
+sudo ln -s ~/.config/ssh/conf.conf /etc/ssh/sshd_config.d/conf.conf
+```
+
+Перезапустите службу SSH:
 ```bash
 sudo service ssh restart
 ```
 
-```bash
-exit
+**Важно:** Неправильная настройка SSH может привести к проблемам с безопасностью.  Убедитесь, что вы понимаете, что делаете.
+
+### Установка Zsh и Oh My Zsh
+1.  Установите Zsh:
+    ```bash
+    sudo apt install -y zsh
+    ```
+
+2.  Установите Oh My Zsh (опционально, но рекомендуется):
+    Oh My Zsh – это фреймворк для управления конфигурацией Zsh.  Он предоставляет темы, плагины и другие полезные инструменты.
+
+    ```bash
+    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    ```
+
+3.  Сделайте Zsh оболочкой по умолчанию:
+    ```bash
+    chsh -s $(which zsh)
+    ```
+
+4.  Перезапустите терминал:
+    ```bash
+    zsh
+    ```
+
+
+### nvim
+#### Установка
+Если у вас уже установлен Neovim, моя конфигурация будет автоматически загружена при запуске Neovim
+##### Через пакетный менеджер ()
+Его можно установить через менеджер, но тогда это будет не последняя версия
+```
+sudo apt install -y nvim
 ```
 
-# zsh config
-
-```bash
-sudo apt install -y zsh
-```
-
-```bash
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-```bash
-source zsh/install.bash
-```
-И перезапускам 
-
-```bash
-zsh
-```
-
-# nvim
-## Установка
-- Для начала ищем послений релиз который подходит под ваше железо
-https://github.com/neovim/neovim/releases
+##### Установка Neovim из исходного кода (для продвинутых пользователей)
+Перейдите на страницу [релизов Neovim](https://github.com/neovim/neovim/releases) и найдите последнюю версию для вашей архитектуры
 - скачиваем
 ```
 wget https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz
 ```
+
 - Распаковка
 ```
 tar -xzvf nvim-linux-x86_64.tar.gz
@@ -56,19 +75,18 @@ rm -r nvim-linux-x86_64.tar.gz
 mkdir .soft
 ```
 
+- Переносим 
 ```
 mv nvim-linux-x86_64 .soft/nvim
 ```
 
-создаём ссылку на nvim
+- создаём ссылку на nvim
 ```bash
 sudo ln -s ~/.soft/nvim/bin/nvim /usr/local/bin/nvim
 ```
 
-Кофиг автоматически подтянется
 
-
-## Error telescope-fzf-native
+##### Решение проблемы с telescope-fzf-native (опционально)
 
 Иногда команда make не запускается автоматом. По этому надо это сделать ручками
 ```
@@ -79,76 +97,46 @@ make
 ```
 
 
-## Преписанные комбинации
 
-- `jk` - esc в inset mode
-- `,<Spase>` - Выключение текущего выделения поиска
-- `gw` - Закрыть буфер
-
-- `gt` или `L` - что бы переместиться на следующею вкладку
-- `gT` или `H` -  что бы переместиться на предыдущею вкладку
-- `,e` Октрывает Explore в новом окне
-
-### Комментарии
-#### Обычный режим
-- `,cc`  - Закомментировать строку (вместо 'gcc')
-- `,cb` - Закомментировать блок (вместо 'gbc')
-
-#### visual mod
-- `,c`  - Закомментировать строки в визуальном режиме (вместо 'gc')
-- `,b`  - Закомментировать блоки в визуальном режиме (вместо 'gb')
-
-
-### Python
-- `ctrl + h` - запустить текущий файл 
-ps - нужно настроить alias python=...
-Если вы пользуйтесь моим конфигом, то этого делать не надо) в conf/zsh
-
-
-### Поиск файлов
-Для этого используется Telescope
-- `,f` - поиск по названию файлов
-- `,g` - поиск по содержимому (g - grep, а точнее используется ripgrep)
-
-### TODO
-- `,td` - Показать все TODO
-
-# Для винды
-## wsl
-Запусить cmd от админа
+## Для винды
+### wsl
+Запустить cmd от админа. Это установит и запустит Debian
 ```cmd
 wsl.exe --install -d Debian
 ```
 
-Запускаем, создаём пользователя
+После установки WSL запустите дистрибутив Debian. Вам будет предложено создать пользователя.
 
-После
+После чего проверяем версию. Желательно что бы была версия 2
 ```cmd
 wsl.exe -l -v
 ```
-Желательно что бы была версия 2
 
-## alacritty + wsl 
-Создаём папку куда перенесём настройки
-Подставьте нужное имя пользователя
+### alacritty + wsl 
+Эти шаги позволяют настроить Alacritty для использования вашей темы и шрифтов в WSL.
+
+1) Создаём папку куда перенесём настройки 
+**Подставьте нужное имя пользователя**
 ```bash
-mkdir -p /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/themes
-```
-Переносим файл в созданную папку
-```bash
-cp ~/.config/alacritty/alacritty.toml /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/
+mkdir -p /mnt/c/Users/<YourUsername>/AppData/Roaming/alacritty/themes
 ```
 
+2) Переносим наши настройки в созданную папку
+```bash
+cp ~/.config/alacritty/alacritty.toml /mnt/c/Users/<YourUsername>/AppData/Roaming/alacritty/
+```
+
+3) Скачиваем темы
 ```bash
 git clone https://github.com/alacritty/alacritty-theme
 ```
 
+4) Переносим темы 
 ```bash
-cp -r alacritty-theme/* /mnt/c/Users/CipherOfTheVoid/AppData/Roaming/alacritty/themes
+cp -r alacritty-theme/* /mnt/c/Users/<YourUsername>/AppData/Roaming/alacritty/themes
 ```
-с сайта скачиваем hack `nerd font` с сайта
+
+**Важно:** Нужно установить шрифты которые используются в темах 
+с сайта скачиваем hack `nerd font` с сайта 
 https://www.nerdfonts.com/font-downloads
 и устанавливаем все шрифты
-
-# TODO
-TODO: null-ls посмотреть что можно еще подключить
